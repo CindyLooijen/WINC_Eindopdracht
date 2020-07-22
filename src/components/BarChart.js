@@ -169,13 +169,13 @@ const BarChart = (props) => {
       <VictoryChart domainPadding={60} theme={wincTheme}>
         <VictoryGroup offset={60}>
           <VictoryBar
-            data={dataWithNumbers}
+            data={props.data}
             x="assignment"
             y="scoreDifficulty"
             //style={{ data: { fill: "red" } }}
           />
           <VictoryBar
-            data={dataWithNumbers}
+            data={props.data}
             x="assignment"
             y="scoreFunFactor"
             //style={{ data: { fill: "yellow" } }}
