@@ -1,0 +1,39 @@
+nav li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li a {
+  text-decoration: none;
+}
+
+.home {
+  text-align: center;
+}
+
+.home-link {
+  font-size: 30px;
+}
+
+.studentlist {
+  width: 20%;
+  float: right;
+  background-color: grey;
+}
+
+.studentlist ul li {
+  margin-bottom: 20px;
+}
+
+.div-home-page {
+  margin-top: 50px;
+}
+
+.home-div {
+  width: 80%;
+  height: 90vh;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+}
