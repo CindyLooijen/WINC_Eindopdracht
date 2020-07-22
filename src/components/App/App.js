@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import data from "../../data/data";
@@ -10,8 +10,15 @@ import Studentpagina from "../Studentpagina/Studentpagina";
 const App = () => {
   const [state, setState] = useState(data);
 
+  const numberedStateData = state.map((object) => ({
+    name: object.name,
+    assignment: object.assignment,
+    scoreDifficulty: parseInt(object.scoreDifficulty),
+    scoreFunFactor: parseInt(object.scoreFunFactor),
+  }));
+
   const getDataOfRightStudent = (student) => {
-    return state.filter((item) => item.name === student);
+    return numberedStateData.filter((item) => item.name === student);
   };
 
   const allPersons = state.map((data) => data.name);
@@ -30,15 +37,6 @@ const App = () => {
       />
     </Route>
   ));
-
-  const getStateDataWithNumbers = state.map((object) => ({
-    name: object.name,
-    assignment: object.assignment,
-    scoreDifficulty: parseInt(object.scoreDifficulty),
-    scoreFunFactor: parseInt(object.scoreFunFactor),
-  }));
-
-  console.log(getStateDataWithNumbers);
 
   return (
     <Router>

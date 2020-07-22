@@ -1,53 +1,7 @@
 import React from "react";
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryGroup } from "victory";
 
-const data = [
-  {
-    name: "Evelyn",
-    assignment: "SCRUM",
-    scoreDifficulty: "3",
-    scoreFunFactor: "4",
-  },
-  {
-    name: "Evelyn",
-    assignment: "W1D1-1",
-    scoreDifficulty: "3",
-    scoreFunFactor: "3",
-  },
-  {
-    name: "Evelyn",
-    assignment: "W1D2-1",
-    scoreDifficulty: "1",
-    scoreFunFactor: "3",
-  },
-  {
-    name: "Evelyn",
-    assignment: "W1D2-2",
-    scoreDifficulty: "1",
-    scoreFunFactor: "4",
-  },
-];
-
-const wincTheme = {
-  area: {
-    style: {
-      data: {
-        fill: "#212121",
-      },
-      labels: {
-        fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
-        fontSize: 12,
-        letterSpacing: "normal",
-        padding: 8,
-        fill: "#455A64",
-        stroke: "transparent",
-        strokeWidth: 0,
-      },
-    },
-    width: 350,
-    height: 350,
-    padding: 50,
-  },
+const cindyTheme = {
   axis: {
     style: {
       axis: {
@@ -83,15 +37,12 @@ const wincTheme = {
         fontFamily: "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
         fontSize: 15,
         letterSpacing: "normal",
-        padding: 5,
+        padding: 10,
         fill: "#455A64",
         stroke: "transparent",
         strokeWidth: 0,
       },
     },
-    width: 350,
-    height: 350,
-    padding: 50,
   },
   bar: {
     style: {
@@ -110,9 +61,6 @@ const wincTheme = {
         strokeWidth: 0,
       },
     },
-    width: 350,
-    height: 350,
-    padding: 20,
   },
   chart: {
     width: 1100,
@@ -156,32 +104,38 @@ const wincTheme = {
   },
 };
 
-const dataWithNumbers = data.map((object) => ({
-  name: object.name,
-  assignment: object.assignment,
-  scoreDifficulty: parseInt(object.scoreDifficulty),
-  scoreFunFactor: parseInt(object.scoreFunFactor),
-}));
-
 const BarChart = (props) => {
   return (
     <div className="div-home-page">
-      <VictoryChart domainPadding={60} theme={wincTheme}>
-        <VictoryGroup offset={60}>
+      <VictoryChart domainPadding={{ x: 11 }} width={1200} height={500}>
+        <VictoryGroup offset={10}>
           <VictoryBar
             data={props.data}
             x="assignment"
             y="scoreDifficulty"
-            //style={{ data: { fill: "red" } }}
+            style={{ data: { fill: "#EA989A" } }}
+            barWidth={7}
+            alignment="start"
           />
           <VictoryBar
             data={props.data}
             x="assignment"
             y="scoreFunFactor"
-            //style={{ data: { fill: "yellow" } }}
+            style={{ data: { fill: "#0D9996" } }}
+            barWidth={7}
+            alignment="start"
           />
         </VictoryGroup>
-        <VictoryAxis />
+        <VictoryAxis
+          style={{
+            axis: { strokeLinecap: "round", strokeLinejoin: "round" },
+            tickLabels: {
+              fontSize: 13,
+              padding: 25,
+              angle: -45,
+            },
+          }}
+        />
         <VictoryAxis
           dependentAxis
           tickValues={[1, 2, 3, 4, 5]}
