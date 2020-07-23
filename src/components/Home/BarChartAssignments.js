@@ -1,11 +1,36 @@
 import React from "react";
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryGroup } from "victory";
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryAxis,
+  VictoryGroup,
+  VictoryLegend,
+} from "victory";
 
-const BarChart = (props) => {
-  console.log(props);
+const BarChartAssignments = (props) => {
   return (
-    <div className="div-home-page">
-      <VictoryChart domainPadding={20}>
+    <div className="div-bar-chart">
+      <VictoryChart domainPadding={20} className="graph">
+        <VictoryLegend
+          gutter={35}
+          x={45}
+          y={0}
+          style={{ title: { fontSize: 10 }, label: { fontSize: 15 } }}
+          labels={10}
+          data={[
+            {
+              name: "Score difficulty",
+              size: 10,
+              symbol: { fill: "#EA989A", size: 4, type: "square" },
+              labels: { fontSize: 8 },
+            },
+            {
+              name: "Score fun factor",
+              symbol: { fill: "#0D9996", size: 4, type: "square" },
+              labels: { fontSize: 8 },
+            },
+          ]}
+        />
         <VictoryGroup offset={10}>
           <VictoryBar
             data={props.data}
@@ -21,12 +46,12 @@ const BarChart = (props) => {
           />
         </VictoryGroup>
         <VictoryAxis
-          tickValues={[1, 2, 3, 4, 5]}
+          tickValues={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
           tickFormat={props.persons}
           style={{
             tickLabels: {
-              fontSize: 5,
-              padding: 10,
+              fontSize: 8,
+              padding: 15,
               //angle: -90,
               writingMode: "vertical-rl",
             },
@@ -38,7 +63,7 @@ const BarChart = (props) => {
           tickFormat={[1, 2, 3, 4, 5]}
           style={{
             tickLabels: {
-              fontSize: 5,
+              fontSize: 8,
             },
           }}
         />
@@ -47,4 +72,4 @@ const BarChart = (props) => {
   );
 };
 
-export default BarChart;
+export default BarChartAssignments;

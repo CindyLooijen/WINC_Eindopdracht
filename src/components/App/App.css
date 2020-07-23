@@ -1,27 +1,90 @@
-nav li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 2fr;
+}
+
+main {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+nav {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  background: linear-gradient(
+    to right,
+    rgb(13, 153, 150, 0.4),
+    rgb(13, 153, 150, 0.03)
+  );
+}
+
+nav ul {
+  margin-top: 30px;
 }
 
 nav li a {
   text-decoration: none;
+  font-size: 20px;
+  color: #033534;
 }
 
-.home {
-  text-align: center;
+nav li a:hover {
+  color: rgb(13, 153, 150);
 }
 
 .home-link {
-  font-size: 30px;
+  font-weight: bold;
 }
 
-.studentlist {
-  width: 20%;
-  float: right;
-  background-color: grey;
+nav li {
+  margin: 0 0 20px 0;
+  list-style: none;
+  padding: 0;
 }
 
-.studentlist ul li {
-  margin-bottom: 20px;
+.home {
+  margin-bottom: 40px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 0.5fr 1fr;
+}
+
+.description {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+}
+
+.bar-chart {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.banner-right {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+#radio-buttons {
+  height: 450px;
+  margin-top: 30px;
+  display: flex;
+  flex-flow: column wrap;
+  font-size: 12px;
+}
+
+#radio-buttons label input {
+  border: 0px;
+  height: 10px;
+}
+
+.div-bar-chart {
+  margin: 0;
+  padding: 0;
+  width: 84%;
+  margin: 0 auto;
 }
