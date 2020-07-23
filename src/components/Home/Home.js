@@ -5,7 +5,11 @@ const Home = (props) => {
   return (
     <div className="home-div">
       <h1>Dit is de homepagina</h1>
-      <BarChart state={props.state} />
+      <BarChart
+        scoreDifficulty={props.scoreDifficulty}
+        scoreFunFactor={props.scoreFunFactor}
+        assignments={props.assignment}
+      />
     </div>
   );
 };
