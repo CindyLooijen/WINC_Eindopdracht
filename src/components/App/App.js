@@ -130,6 +130,7 @@ const App = () => {
                 filterAssignments={getDataOfRightAssignment}
                 dataRightAssignment={rightAssignment}
                 assignments={allUniqueAssignments}
+                persons={allUniquePersons}
               />
             </Route>
           </Switch>

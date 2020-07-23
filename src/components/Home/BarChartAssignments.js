@@ -22,7 +22,7 @@ const BarChart = (props) => {
         </VictoryGroup>
         <VictoryAxis
           tickValues={[1, 2, 3, 4, 5]}
-          tickFormat={props.assignment}
+          tickFormat={props.persons}
           style={{
             tickLabels: {
               fontSize: 5,

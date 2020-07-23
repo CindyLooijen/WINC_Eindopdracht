@@ -28,7 +28,10 @@ const Home = (props) => {
       />
       <div>
         {radioButtonsToSort}
-        <BarChartAssignments data={props.dataRightAssignment} />
+        <BarChartAssignments
+          data={props.dataRightAssignment}
+          persons={props.persons}
+        />
       </div>
     </div>
   );
