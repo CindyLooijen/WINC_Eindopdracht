@@ -2,19 +2,20 @@ import React from "react";
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryGroup } from "victory";
 
 const BarChart = (props) => {
+  console.log(props);
   return (
     <div className="div-home-page">
       <VictoryChart domainPadding={20}>
-        <VictoryGroup offset={3}>
+        <VictoryGroup offset={10}>
           <VictoryBar
             data={props.data}
-            x="assignment"
+            x="name"
             y="scoreDifficulty"
             style={{ data: { fill: "#EA989A" } }}
           />
           <VictoryBar
             data={props.data}
-            x="assignment"
+            x="name"
             y="scoreFunFactor"
             style={{ data: { fill: "#0D9996" } }}
           />
