@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import data from "../../data/data";
 
 import Home from "../Home/Home";
-//import Aranka from "../Aranka/Aranka";
 import Studentpage from "../Studentpage/StudentPages";
+import ScoresPerAssignment from "../Home/ScoresPerAssignment";
 
 const App = () => {
   const [state, setState] = useState(data);
@@ -56,7 +56,6 @@ const App = () => {
     const filteredData = numberedStateData
       .filter((item) => item.assignment === assignment)
       .map((score) => score[typeOfScore]);
-
     const averageScore =
       filteredData.reduce((a, b) => a + b) / filteredData.length;
     return averageScore;
@@ -106,22 +105,31 @@ const App = () => {
 
   return (
     <Router>
-      <div>
-        <nav className="home">
+      <div className="container">
+        <nav>
           <ul>
-            <li>
+            <li className="home">
               <Link className="home-link" to="/">
                 HOME
               </Link>
             </li>
+            {linkItemsNav}
+            <li>
+              <Link to="/score-per-assignment">Assignments</Link>
+            </li>
           </ul>
-        </nav>
-        <nav className="studentlist">
-          <ul>{linkItemsNav}</ul>
         </nav>
         <main>
           <Switch>
             {routeItemsNav}
+            <Route path="/score-per-assignment">
+              <ScoresPerAssignment
+                filterAssignments={getDataOfRightAssignment}
+                dataRightAssignment={rightAssignment}
+                assignments={allUniqueAssignments}
+                persons={allUniquePersons}
+              />
+            </Route>
             <Route path="/">
               <Home
                 //scoreDifficulty={dataWithAverageScoreDifficulty}
