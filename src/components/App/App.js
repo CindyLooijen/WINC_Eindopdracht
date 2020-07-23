@@ -9,6 +9,7 @@ import Studentpage from "../Studentpage/StudentPages";
 
 const App = () => {
   const [state, setState] = useState(data);
+  const [rightAssignment, setStateRightAssignment] = useState([]);
 
   const numberedStateData = state.map((object) => ({
     name: object.name,
@@ -19,6 +20,15 @@ const App = () => {
 
   const getDataOfRightStudent = (student) => {
     return numberedStateData.filter((item) => item.name === student);
+  };
+
+  const getDataOfRightAssignment = (assignment) => {
+    const rightAssignment = numberedStateData.filter(
+      (item) => item.assignment === assignment
+    );
+    setStateRightAssignment(rightAssignment);
+    console.log(rightAssignment);
+    return rightAssignment;
   };
 
   const allPersons = state.map((data) => data.name);
@@ -42,7 +52,23 @@ const App = () => {
     </Route>
   ));
 
-  const getAverageScoreDifficulty = (assignment) => {
+  const getAverageScores = (assignment, typeOfScore) => {
+    const filteredData = numberedStateData
+      .filter((item) => item.assignment === assignment)
+      .map((score) => score[typeOfScore]);
+
+    const averageScore =
+      filteredData.reduce((a, b) => a + b) / filteredData.length;
+    return averageScore;
+  };
+
+  const dataWithAverageScores = allUniqueAssignments.map((assignment) => ({
+    assignment: assignment,
+    scoreDifficulty: getAverageScores(assignment, "scoreDifficulty"),
+    scoreFunFactor: getAverageScores(assignment, "scoreFunFactor"),
+  }));
+
+  /* const getAverageScoreDifficulty = (assignment) => {
     const filteredData = numberedStateData
       .filter((item) => item.assignment === assignment)
       .map((score) => score.scoreDifficulty);
@@ -76,7 +102,7 @@ const App = () => {
       assignment: assignment,
       scoreFunFactor: getAverageScoreFunFactor(assignment),
     })
-  );
+  ); */
 
   return (
     <Router>
@@ -98,8 +124,11 @@ const App = () => {
             {routeItemsNav}
             <Route path="/">
               <Home
-                scoreDifficulty={dataWithAverageScoreDifficulty}
-                scoreFunFactor={dataWithAverageScoreFunFactor}
+                //scoreDifficulty={dataWithAverageScoreDifficulty}
+                //scoreFunFactor={dataWithAverageScoreFunFactor}
+                dataAverageScore={dataWithAverageScores}
+                filterAssignments={getDataOfRightAssignment}
+                dataRightAssignment={rightAssignment}
                 assignments={allUniqueAssignments}
               />
             </Route>
