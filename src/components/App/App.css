@@ -166,3 +166,31 @@ nav li {
   font-size: 20px;
   font-weight: bold;
 }
+
+.checkbox {
+  display: none;
+}
+
+.filters {
+  display: flex;
+  flex-flow: column wrap;
+  font-size: 17px;
+}
+
+.first-label {
+  margin-bottom: 20px;
+}
+
+.expl {
+  font-size: 12px;
+}
+
+.filter-studentpage {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.filter-homepage {
+  margin-top: 30px;
+  text-align: center;
+}

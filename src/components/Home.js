@@ -3,6 +3,13 @@ import BarChart from "./BarChart";
 import LineChart from "./LineChart";
 
 const Home = (props) => {
+  const labelStyleDifficult = props.checkedDifficult
+    ? { color: "red" }
+    : { color: "green" };
+  const labelStyleFunFactor = props.checkedFunFactor
+    ? { color: "red" }
+    : { color: "green" };
+
   return (
     <div className="main">
       <div className="description">
@@ -29,10 +36,10 @@ const Home = (props) => {
           </div>
         </div>
         <BarChart
-          //scoreDifficulty={props.scoreDifficulty}
-          // scoreFunFactor={props.scoreFunFactor}
           data={props.dataAverageScore}
           assignments={props.assignments}
+          checkedDifficult={props.checkedDifficult}
+          checkedFunFactor={props.checkedFunFactor}
         />
         <div className="line-chart">
           <div className="legend">
@@ -49,15 +56,45 @@ const Home = (props) => {
             </div>
           </div>
           <LineChart
-            //scoreDifficulty={props.scoreDifficulty}
-            // scoreFunFactor={props.scoreFunFactor}
             data={props.dataAverageScore}
             assignments={props.assignments}
           />
         </div>
       </div>
       <div className="banner-right">
-        <h1>Hier komt de rechter banner</h1>
+        <div className="filter-homepage">
+          <p className="expl">
+            Klik op de text om het filter in/uit te schakelen
+          </p>
+          <div className="filters">
+            <label class="first-label" style={labelStyleDifficult}>
+              <input
+                type="checkbox"
+                className="checkbox"
+                checked={props.checkedDifficult}
+                onChange={(event) =>
+                  props.setStateDifficult(event.target.checked)
+                }
+              ></input>
+              {props.checkedDifficult
+                ? "Exclude scores difficulty"
+                : "Include scores diffculty"}
+            </label>
+            <label style={labelStyleFunFactor}>
+              <input
+                type="checkbox"
+                className="checkbox"
+                checked={props.checkedFunFactor}
+                onChange={(event) =>
+                  props.setStateFunFactor(event.target.checked)
+                }
+              ></input>
+              {props.checkedFunFactor
+                ? "Exclude scores funfactor"
+                : "Include scores funfactor"}
+            </label>
+          </div>
+        </div>
       </div>
     </div>
   );
