@@ -107,24 +107,26 @@ const App = () => {
     <Router>
       <div className="container">
         <nav className="nav">
-          <ul>
-            <li className="home">
-              <Link className="home-link" to="/">
-                HOME
-              </Link>
-            </li>
-            <li className="home">
-              <Link className="students-link" to="/">
-                Students
-              </Link>
-            </li>
-            {linkItemsNav}
-            <li className="assignments">
-              <Link to="/score-per-assignment" className="home-link">
-                Assignments
-              </Link>
-            </li>
-          </ul>
+          <div>
+            <ul>
+              <li className="home">
+                <Link className="home-link" to="/">
+                  HOME
+                </Link>
+              </li>
+              <li className="home">
+                <Link className="students-link" to="/">
+                  Students
+                </Link>
+              </li>
+              {linkItemsNav}
+              <li className="assignments">
+                <Link to="/score-per-assignment" className="home-link">
+                  Assignments
+                </Link>
+              </li>
+            </ul>
+          </div>
         </nav>
         <main>
           <Switch>
