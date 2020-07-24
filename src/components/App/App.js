@@ -3,9 +3,9 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import data from "../../data/data";
 
-import Home from "../Home/Home";
-import Studentpage from "../Studentpage/StudentPages";
-import ScoresPerAssignment from "../Home/ScoresPerAssignment";
+import Home from "../Home";
+import Studentpage from "../StudentPages";
+import ScoresPerAssignment from "../ScoresPerAssignment";
 
 const App = () => {
   const [state, setState] = useState(data);
@@ -37,7 +37,7 @@ const App = () => {
   const allUniqueAssignments = [...new Set(allAssignments)];
 
   const linkItemsNav = allUniquePersons.map((person) => (
-    <li key={person}>
+    <li key={person} className="students">
       <Link to={`/${person}`}>{person}</Link>
     </li>
   ));
@@ -106,16 +106,23 @@ const App = () => {
   return (
     <Router>
       <div className="container">
-        <nav>
+        <nav className="nav">
           <ul>
             <li className="home">
               <Link className="home-link" to="/">
                 HOME
               </Link>
             </li>
+            <li className="home">
+              <Link className="students-link" to="/">
+                Students
+              </Link>
+            </li>
             {linkItemsNav}
-            <li>
-              <Link to="/score-per-assignment">Assignments</Link>
+            <li className="assignments">
+              <Link to="/score-per-assignment" className="home-link">
+                Assignments
+              </Link>
             </li>
           </ul>
         </nav>

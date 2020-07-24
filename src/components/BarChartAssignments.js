@@ -1,36 +1,10 @@
 import React from "react";
-import {
-  VictoryBar,
-  VictoryChart,
-  VictoryAxis,
-  VictoryGroup,
-  VictoryLegend,
-} from "victory";
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryGroup } from "victory";
 
 const BarChartAssignments = (props) => {
   return (
     <div className="div-bar-chart">
       <VictoryChart domainPadding={20} className="graph">
-        <VictoryLegend
-          gutter={35}
-          x={45}
-          y={0}
-          style={{ title: { fontSize: 10 }, label: { fontSize: 15 } }}
-          labels={10}
-          data={[
-            {
-              name: "Score difficulty",
-              size: 10,
-              symbol: { fill: "#EA989A", size: 4, type: "square" },
-              labels: { fontSize: 8 },
-            },
-            {
-              name: "Score fun factor",
-              symbol: { fill: "#0D9996", size: 4, type: "square" },
-              labels: { fontSize: 8 },
-            },
-          ]}
-        />
         <VictoryGroup offset={10}>
           <VictoryBar
             data={props.data}

@@ -5,7 +5,6 @@ import {
   VictoryAxis,
   VictoryGroup,
   VictoryZoomContainer,
-  VictoryLegend,
   VictoryTooltip,
 } from "victory";
 
@@ -31,40 +30,20 @@ const BarChart = (props) => {
           />
         }
       >
-        <VictoryLegend
-          gutter={35}
-          x={45}
-          y={0}
-          style={{ title: { fontSize: 10 }, label: { fontSize: 15 } }}
-          labels={10}
-          data={[
-            {
-              name: "Score difficulty",
-              size: 10,
-              symbol: { fill: "#EA989A", size: 4, type: "square" },
-              labels: { fontSize: 8 },
-            },
-            {
-              name: "Score fun factor",
-              symbol: { fill: "#0D9996", size: 4, type: "square" },
-              labels: { fontSize: 8 },
-            },
-          ]}
-        />
         <VictoryGroup offset={3}>
           <VictoryBar
             labelComponent={<VictoryTooltip />}
             data={createDataWithLabels}
             x="assignment"
             y="scoreDifficulty"
-            style={{ data: { fill: "#EA989A" } }}
+            style={{ data: { fill: "#EA989A" }, labels: { fontSize: 8 } }}
           />
           <VictoryBar
             labelComponent={<VictoryTooltip />}
             data={createDataWithLabels}
             x="assignment"
             y="scoreFunFactor"
-            style={{ data: { fill: "#0D9996" } }}
+            style={{ data: { fill: "#0D9996" }, labels: { fontSize: 8 } }}
           />
         </VictoryGroup>
         <VictoryAxis

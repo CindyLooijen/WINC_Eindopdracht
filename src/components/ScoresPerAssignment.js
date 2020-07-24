@@ -1,5 +1,5 @@
 import React from "react";
-import BarChartAssignments from "../Home/BarChartAssignments";
+import BarChartAssignments from "./BarChartAssignments";
 
 const ScoresPerAssignment = (props) => {
   const radioButtonsToSort = props.assignments.map((assignment, index) => (
@@ -19,9 +19,24 @@ const ScoresPerAssignment = (props) => {
   return (
     <div className="main">
       <div className="description">
-        <h1>Hierop komen de scores per assignment</h1>
+        <h1>Scores per assignment</h1>
+        <p>
+          Kies in de lijst rechts een opdracht. <br /> De grafiek hieronder laat
+          de data van die opdracht zien
+        </p>
       </div>
       <div className="bar-chart">
+        <div className="legend">
+          <div className="title-students">Scores for each assignment</div>
+          <div className="wrapper-legend">
+            <div className="blue"></div>
+            <div className="score-difficulty">Score difficulty</div>
+          </div>
+          <div className="wrapper-legend">
+            <div className="pink"></div>
+            <div className="score-funfactor">Score funfactor</div>
+          </div>
+        </div>
         <BarChartAssignments
           data={props.dataRightAssignment}
           persons={props.persons}
