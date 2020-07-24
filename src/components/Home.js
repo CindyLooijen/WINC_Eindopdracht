@@ -1,5 +1,6 @@
 import React from "react";
 import BarChart from "./BarChart";
+import LineChart from "./LineChart";
 
 const Home = (props) => {
   return (
@@ -13,10 +14,31 @@ const Home = (props) => {
           Scrol naar links en rechts om andere data in beeld te krijgen
         </p>
       </div>
-      <div className="bar-chart">
-        <div>
+      <div className="bar-chart-home">
+        <div className="legend">
+          <div className="title-home">
+            Average scores for each assignment - bar chart
+          </div>
+          <div className="wrapper-legend">
+            <div className="blue"></div>
+            <div className="score-difficulty">Score difficulty</div>
+          </div>
+          <div className="wrapper-legend">
+            <div className="pink"></div>
+            <div className="score-funfactor">Score funfactor</div>
+          </div>
+        </div>
+        <BarChart
+          //scoreDifficulty={props.scoreDifficulty}
+          // scoreFunFactor={props.scoreFunFactor}
+          data={props.dataAverageScore}
+          assignments={props.assignments}
+        />
+        <div className="line-chart">
           <div className="legend">
-            <div className="title-home">Average scores for each assignment</div>
+            <div className="title-home">
+              Average scores for each assignment - line chart
+            </div>
             <div className="wrapper-legend">
               <div className="blue"></div>
               <div className="score-difficulty">Score difficulty</div>
@@ -26,7 +48,7 @@ const Home = (props) => {
               <div className="score-funfactor">Score funfactor</div>
             </div>
           </div>
-          <BarChart
+          <LineChart
             //scoreDifficulty={props.scoreDifficulty}
             // scoreFunFactor={props.scoreFunFactor}
             data={props.dataAverageScore}
