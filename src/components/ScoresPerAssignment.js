@@ -1,5 +1,6 @@
 import React from "react";
 import BarChartAssignments from "./BarChartAssignments";
+import Legend from "../components/Legend";
 
 const ScoresPerAssignment = (props) => {
   const radioButtonsToSort = props.assignments.map((assignment, index) => (
@@ -16,6 +17,9 @@ const ScoresPerAssignment = (props) => {
     </div>
   ));
 
+  const dataAssignment = props.dataRightAssignment;
+  console.log(dataAssignment);
+
   return (
     <div className="main">
       <div className="description">
@@ -24,19 +28,14 @@ const ScoresPerAssignment = (props) => {
           Kies in de lijst rechts een opdracht. <br /> De grafiek hieronder laat
           de data van die opdracht zien
         </p>
+        <h4>
+          {dataAssignment.length !== 0
+            ? "Huidige selectie: " + dataAssignment[0].assignment
+            : ""}
+        </h4>
       </div>
       <div className="bar-chart">
-        <div className="legend">
-          <div className="title-students">Scores for each assignment</div>
-          <div className="wrapper-legend">
-            <div className="pink"></div>
-            <div className="score-difficulty">Score difficulty</div>
-          </div>
-          <div className="wrapper-legend">
-            <div className="blue"></div>
-            <div className="score-funfactor">Score funfactor</div>
-          </div>
-        </div>
+        <Legend legendTitle={"Scores for each assignment"} />
         <BarChartAssignments
           data={props.dataRightAssignment}
           persons={props.persons}

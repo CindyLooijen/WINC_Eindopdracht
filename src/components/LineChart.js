@@ -19,16 +19,24 @@ const LineChart = (props) => {
     }));
   };
 
+  const difficultLineStyle = props.checkedDifficult
+    ? { data: { stroke: "#EA989A" } }
+    : { data: { strokeOpacity: 0 } };
+
+  const funFactorLineStyle = props.checkedFunFactor
+    ? { data: { stroke: "#0D9996" } }
+    : { data: { strokeOpacity: 0 } };
+
   return (
     <div className="div-bar-chart">
       <VictoryChart>
         <VictoryLine
           data={getDataLineChart(averageScoreDifficulty)}
-          style={{ data: { stroke: "#EA989A" } }}
+          style={difficultLineStyle}
         />
         <VictoryLine
           data={getDataLineChart(averageScoreFunFactor)}
-          style={{ data: { stroke: "#0D9996" } }}
+          style={funFactorLineStyle}
         />
         <VictoryAxis
           tickValues={[1, 2, 3, 4, 5]}

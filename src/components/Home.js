@@ -1,15 +1,10 @@
 import React from "react";
 import BarChart from "./BarChart";
 import LineChart from "./LineChart";
+import Filters from "../components/Filters";
+import Legend from "../components/Legend";
 
 const Home = (props) => {
-  const labelStyleDifficult = props.checkedDifficult
-    ? { color: "red" }
-    : { color: "green" };
-  const labelStyleFunFactor = props.checkedFunFactor
-    ? { color: "red" }
-    : { color: "green" };
-
   return (
     <div className="main">
       <div className="description">
@@ -22,19 +17,9 @@ const Home = (props) => {
         </p>
       </div>
       <div className="bar-chart-home">
-        <div className="legend">
-          <div className="title-home">
-            Average scores for each assignment - bar chart
-          </div>
-          <div className="wrapper-legend">
-            <div className="pink"></div>
-            <div className="score-difficulty">Score difficulty</div>
-          </div>
-          <div className="wrapper-legend">
-            <div className="blue"></div>
-            <div className="score-funfactor">Score funfactor</div>
-          </div>
-        </div>
+        <Legend
+          legendTitle={"Average scores for each assignment - bar chart"}
+        />
         <BarChart
           data={props.dataAverageScore}
           assignments={props.assignments}
@@ -42,59 +27,24 @@ const Home = (props) => {
           checkedFunFactor={props.checkedFunFactor}
         />
         <div className="line-chart">
-          <div className="legend">
-            <div className="title-home">
-              Average scores for each assignment - line chart
-            </div>
-            <div className="wrapper-legend">
-              <div className="pink"></div>
-              <div className="score-difficulty">Score difficulty</div>
-            </div>
-            <div className="wrapper-legend">
-              <div className="blue"></div>
-              <div className="score-funfactor">Score funfactor</div>
-            </div>
-          </div>
+          <Legend
+            legendTitle={"Average scores for each assignment - line chart"}
+          />
           <LineChart
             data={props.dataAverageScore}
             assignments={props.assignments}
+            checkedDifficult={props.checkedDifficult}
+            checkedFunFactor={props.checkedFunFactor}
           />
         </div>
       </div>
       <div className="banner-right">
-        <div className="filter-homepage">
-          <p className="expl">
-            Klik op de text om het filter in/uit te schakelen
-          </p>
-          <div className="filters">
-            <label class="first-label" style={labelStyleDifficult}>
-              <input
-                type="checkbox"
-                className="checkbox"
-                checked={props.checkedDifficult}
-                onChange={(event) =>
-                  props.setStateDifficult(event.target.checked)
-                }
-              ></input>
-              {props.checkedDifficult
-                ? "Exclude scores difficulty"
-                : "Include scores diffculty"}
-            </label>
-            <label style={labelStyleFunFactor}>
-              <input
-                type="checkbox"
-                className="checkbox"
-                checked={props.checkedFunFactor}
-                onChange={(event) =>
-                  props.setStateFunFactor(event.target.checked)
-                }
-              ></input>
-              {props.checkedFunFactor
-                ? "Exclude scores funfactor"
-                : "Include scores funfactor"}
-            </label>
-          </div>
-        </div>
+        <Filters
+          checkedDifficult={props.checkedDifficult}
+          setStateDifficult={props.setStateDifficult}
+          checkedFunFactor={props.checkedFunFactor}
+          setStateFunFactor={props.setStateFunFactor}
+        />
       </div>
     </div>
   );
