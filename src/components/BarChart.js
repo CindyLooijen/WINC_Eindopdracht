@@ -10,11 +10,16 @@ import {
 
 const BarChart = (props) => {
   const data = props.data;
-  const createDataWithLabels = data.map((item) => ({
+  const createDataWithLabelsDifficulty = data.map((item) => ({
     assignment: item.assignment,
     scoreDifficulty: item.scoreDifficulty,
+    label: `Assignment ${item.assignment}, Difficulty: ${item.scoreDifficulty}`,
+  }));
+
+  const createDataWithLabelsFunFactor = data.map((item) => ({
+    assignment: item.assignment,
     scoreFunFactor: item.scoreFunFactor,
-    label: `Assignment ${item.assignment}, Difficulty: ${item.scoreDifficulty}, FunFactor: ${item.scoreFunFactor}`,
+    label: `Assignment ${item.assignment}, FunFactor: ${item.scoreFunFactor}`,
   }));
 
   return (
@@ -33,14 +38,14 @@ const BarChart = (props) => {
         <VictoryGroup offset={3}>
           <VictoryBar
             labelComponent={<VictoryTooltip />}
-            data={createDataWithLabels}
+            data={createDataWithLabelsDifficulty}
             x="assignment"
             y="scoreDifficulty"
             style={{ data: { fill: "#EA989A" }, labels: { fontSize: 8 } }}
           />
           <VictoryBar
             labelComponent={<VictoryTooltip />}
-            data={createDataWithLabels}
+            data={createDataWithLabelsFunFactor}
             x="assignment"
             y="scoreFunFactor"
             style={{ data: { fill: "#0D9996" }, labels: { fontSize: 8 } }}

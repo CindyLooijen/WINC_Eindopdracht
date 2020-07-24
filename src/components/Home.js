@@ -20,11 +20,11 @@ const Home = (props) => {
             Average scores for each assignment - bar chart
           </div>
           <div className="wrapper-legend">
-            <div className="blue"></div>
+            <div className="pink"></div>
             <div className="score-difficulty">Score difficulty</div>
           </div>
           <div className="wrapper-legend">
-            <div className="pink"></div>
+            <div className="blue"></div>
             <div className="score-funfactor">Score funfactor</div>
           </div>
         </div>
@@ -40,11 +40,11 @@ const Home = (props) => {
               Average scores for each assignment - line chart
             </div>
             <div className="wrapper-legend">
-              <div className="blue"></div>
+              <div className="pink"></div>
               <div className="score-difficulty">Score difficulty</div>
             </div>
             <div className="wrapper-legend">
-              <div className="pink"></div>
+              <div className="blue"></div>
               <div className="score-funfactor">Score funfactor</div>
             </div>
           </div>

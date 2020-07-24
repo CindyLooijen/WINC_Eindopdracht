@@ -6,6 +6,7 @@ import data from "../../data/data";
 import Home from "../Home";
 import Studentpage from "../StudentPages";
 import ScoresPerAssignment from "../ScoresPerAssignment";
+import studentProfiles from "../../data/dataStudentProfiles";
 
 const App = () => {
   const [state, setState] = useState(data);
@@ -36,6 +37,20 @@ const App = () => {
   const allAssignments = state.map((data) => data.assignment);
   const allUniqueAssignments = [...new Set(allAssignments)];
 
+  const studentProfileInfo = studentProfiles.map((student, key) => (
+    <div className="student-profile" key={allUniquePersons[key]}>
+      <img src={`${student.photo}`} alt="Profile" />
+      <p class="student-name">
+        {allUniquePersons[key]} {student.lastName}
+      </p>
+      <div className="student-info">
+        <p>{student.age} jaar oud</p>
+        <p>{student.phoneNumber}</p>
+        <p>{student.email}</p>
+      </div>
+    </div>
+  ));
+
   const linkItemsNav = allUniquePersons.map((person) => (
     <li key={person} className="students">
       <Link to={`/${person}`}>{person}</Link>
@@ -48,6 +63,7 @@ const App = () => {
         person={person}
         getDataOfRightStudent={getDataOfRightStudent}
         assignments={allUniqueAssignments}
+        studentProfiles={studentProfileInfo}
       />
     </Route>
   ));
@@ -66,42 +82,6 @@ const App = () => {
     scoreDifficulty: getAverageScores(assignment, "scoreDifficulty"),
     scoreFunFactor: getAverageScores(assignment, "scoreFunFactor"),
   }));
-
-  /* const getAverageScoreDifficulty = (assignment) => {
-    const filteredData = numberedStateData
-      .filter((item) => item.assignment === assignment)
-      .map((score) => score.scoreDifficulty);
-
-    const averageScore =
-      filteredData.reduce((a, b) => a + b) / filteredData.length;
-
-    return averageScore;
-  };
-
-  const getAverageScoreFunFactor = (assignment) => {
-    const filteredData = numberedStateData
-      .filter((item) => item.assignment === assignment)
-      .map((score) => score.scoreFunFactor);
-
-    const averageScore =
-      filteredData.reduce((a, b) => a + b) / filteredData.length;
-
-    return averageScore;
-  };
-
-  const dataWithAverageScoreDifficulty = allUniqueAssignments.map(
-    (assignment) => ({
-      assignment: assignment,
-      scoreDifficulty: getAverageScoreDifficulty(assignment),
-    })
-  );
-
-  const dataWithAverageScoreFunFactor = allUniqueAssignments.map(
-    (assignment) => ({
-      assignment: assignment,
-      scoreFunFactor: getAverageScoreFunFactor(assignment),
-    })
-  ); */
 
   return (
     <Router>
