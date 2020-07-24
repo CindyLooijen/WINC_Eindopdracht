@@ -9,7 +9,7 @@ import ScoresPerAssignment from "../ScoresPerAssignment";
 import studentProfiles from "../../data/dataStudentProfiles";
 
 const App = () => {
-  const [state, setState] = useState(data);
+  const [state] = useState(data);
   const [rightAssignment, setStateRightAssignment] = useState([]);
   const [checkedDifficult, setStateCheckedDifficult] = useState(true);
   const [checkedFunFactor, setStateCheckedFunFactor] = useState(true);
@@ -30,8 +30,6 @@ const App = () => {
       (item) => item.assignment === assignment
     );
     setStateRightAssignment(rightAssignment);
-    console.log(rightAssignment);
-    return rightAssignment;
   };
 
   const allPersons = state.map((data) => data.name);
