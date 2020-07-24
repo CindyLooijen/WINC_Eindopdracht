@@ -154,3 +154,15 @@ nav li {
 .score-funfactor {
   font-size: 14px;
 }
+
+.student-profile {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  text-align: center;
+}
+
+.student-name {
+  font-size: 20px;
+  font-weight: bold;
+}
