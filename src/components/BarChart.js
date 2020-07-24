@@ -22,6 +22,14 @@ const BarChart = (props) => {
     label: `Assignment ${item.assignment}, FunFactor: ${item.scoreFunFactor}`,
   }));
 
+  const difficultBarStyle = props.checkedDifficult
+    ? { data: { fill: "#EA989A" }, labels: { fontSize: 8 } }
+    : { data: { fillOpacity: 0 }, labels: { fontSize: 8 } };
+
+  const funFactorBarStyle = props.checkedFunFactor
+    ? { data: { fill: "#0D9996" }, labels: { fontSize: 8 } }
+    : { data: { fillOpacity: 0 }, labels: { fontSize: 8 } };
+
   return (
     <div className="div-bar-chart">
       <VictoryChart
@@ -41,14 +49,14 @@ const BarChart = (props) => {
             data={createDataWithLabelsDifficulty}
             x="assignment"
             y="scoreDifficulty"
-            style={{ data: { fill: "#EA989A" }, labels: { fontSize: 8 } }}
+            style={difficultBarStyle}
           />
           <VictoryBar
             labelComponent={<VictoryTooltip />}
             data={createDataWithLabelsFunFactor}
             x="assignment"
             y="scoreFunFactor"
-            style={{ data: { fill: "#0D9996" }, labels: { fontSize: 8 } }}
+            style={funFactorBarStyle}
           />
         </VictoryGroup>
         <VictoryAxis

@@ -11,6 +11,8 @@ import studentProfiles from "../../data/dataStudentProfiles";
 const App = () => {
   const [state, setState] = useState(data);
   const [rightAssignment, setStateRightAssignment] = useState([]);
+  const [checkedDifficult, setStateCheckedDifficult] = useState(true);
+  const [checkedFunFactor, setStateCheckedFunFactor] = useState(true);
 
   const numberedStateData = state.map((object) => ({
     name: object.name,
@@ -40,7 +42,7 @@ const App = () => {
   const studentProfileInfo = studentProfiles.map((student, key) => (
     <div className="student-profile" key={allUniquePersons[key]}>
       <img src={`${student.photo}`} alt="Profile" />
-      <p class="student-name">
+      <p className="student-name">
         {allUniquePersons[key]} {student.lastName}
       </p>
       <div className="student-info">
@@ -64,6 +66,10 @@ const App = () => {
         getDataOfRightStudent={getDataOfRightStudent}
         assignments={allUniqueAssignments}
         studentProfiles={studentProfileInfo}
+        checkedDifficult={checkedDifficult}
+        setStateDifficult={setStateCheckedDifficult}
+        checkedFunFactor={checkedFunFactor}
+        setStateFunFactor={setStateCheckedFunFactor}
       />
     </Route>
   ));
@@ -121,13 +127,15 @@ const App = () => {
             </Route>
             <Route path="/">
               <Home
-                //scoreDifficulty={dataWithAverageScoreDifficulty}
-                //scoreFunFactor={dataWithAverageScoreFunFactor}
                 dataAverageScore={dataWithAverageScores}
                 filterAssignments={getDataOfRightAssignment}
                 dataRightAssignment={rightAssignment}
                 assignments={allUniqueAssignments}
                 persons={allUniquePersons}
+                checkedDifficult={checkedDifficult}
+                setStateDifficult={setStateCheckedDifficult}
+                checkedFunFactor={checkedFunFactor}
+                setStateFunFactor={setStateCheckedFunFactor}
               />
             </Route>
           </Switch>
